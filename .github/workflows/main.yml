@@ -29,3 +29,9 @@ jobs:
     - name: Build Docker Image
       run: docker build -t iuriramos93/journey-devops:${{steps.generate_sha.outputs.sha}} .
 
+    - name: Push Image
+      run: |
+        docker push iuriramos93/journey-devops:${{steps.generate_sha.outputs.sha}}
+        docker tag iuriramos93/journey-devops:${{steps.generate_sha.outputs.sha}} iuriramos93/journey-devops:latest
+        docker push iuriramos93/journey-devops:latest
+
