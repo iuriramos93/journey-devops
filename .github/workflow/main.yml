@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+   branches:  
+     - main
+jobs:
+  build-and-push:
+   name: 'Build and Push'
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build Docker Image
+      run: docker build -t iuriramos93/journey-devops:latest .
